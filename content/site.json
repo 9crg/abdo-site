@@ -4,12 +4,6 @@
   "hero_intro": "Photo edits by abdo. Real portraits, reworked in Photoshop.",
   "hero_side": "Portraits\nManipulation\nRetouching\nSince 2024",
   "statement": "Every image here started as a real photo of a real person. I take it into Photoshop and build it into something new.",
-  "about_lead": "Photo editor and digital artist working in Photoshop.",
-  "about_text": "I take photos of people and edit them: retouching, changing the mood, and sometimes building a whole new scene around them.\n\nEach piece is about keeping the person recognizable while making the image feel like more than a photo.",
-  "contact_text": "Want your photo edited? Send me a message.",
-  "email": "you@example.com",
-  "instagram": "https://instagram.com/",
-  "artstation": "https://www.artstation.com/",
   "works": [
     {
       "image": "media/raven-swarm.jpg",
@@ -122,6 +116,20 @@
       "year": 2026,
       "featured": false,
       "description": "A violinist drifting in a boat, met by a winged figure over glittering water."
+    },
+    {
+      "image": "media/dreamy-pink-anime-collector-room.png",
+      "title": "Dreamy Pink Anime Collector Room",
+      "category": "Retouching",
+      "year": 2025,
+      "featured": false,
+      "description": "A dreamy pink anime-inspired collector room featuring vibrant neon lighting, detailed displays, and a cozy aesthetic."
     }
-  ]
+  ],
+  "about_lead": "Photo editor and digital artist working in Photoshop.",
+  "about_text": "I take photos of people and edit them: retouching, changing the mood, and sometimes building a whole new scene around them.\n\nEach piece is about keeping the person recognizable while making the image feel like more than a photo.",
+  "contact_text": "Want your photo edited? Send me a message.",
+  "email": "you@example.com",
+  "instagram": "https://instagram.com/9crg",
+  "artstation": "https://www.artstation.com/"
 }
