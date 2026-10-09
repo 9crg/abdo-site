@@ -42,8 +42,8 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
-.page { width: min(1240px, 100%); margin-inline: auto; }
-.pad { padding-inline: clamp(1rem, 3vw, 1.75rem); }
+.page { width: 100%; }
+.pad { padding-inline: max(clamp(1rem, 3vw, 1.75rem), calc((100% - 1240px) / 2 + 1.75rem)); }
 .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: .02em; }
 .tiny { font-family: var(--mono); font-size: .62rem; line-height: 1.6; text-transform: uppercase; letter-spacing: .04em; }
 .serif-title { font: italic 400 clamp(2rem, 4.2vw, 3.1rem)/1 var(--serif); text-transform: uppercase; margin: 0; letter-spacing: -.005em; }
