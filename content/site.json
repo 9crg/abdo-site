@@ -1,0 +1,127 @@
+{
+  "hero_image": "media/hero-jet.jpg",
+  "hero_title": "Photos,\nreimagined",
+  "hero_intro": "Photo edits by abdo. Real portraits, reworked in Photoshop.",
+  "hero_side": "Portraits\nManipulation\nRetouching\nSince 2024",
+  "statement": "Every image here started as a real photo of a real person. I take it into Photoshop and build it into something new.",
+  "about_lead": "Photo editor and digital artist working in Photoshop.",
+  "about_text": "I take photos of people and edit them: retouching, changing the mood, and sometimes building a whole new scene around them.\n\nEach piece is about keeping the person recognizable while making the image feel like more than a photo.",
+  "contact_text": "Want your photo edited? Send me a message.",
+  "email": "you@example.com",
+  "instagram": "https://instagram.com/",
+  "artstation": "https://www.artstation.com/",
+  "works": [
+    {
+      "image": "media/raven-swarm.jpg",
+      "title": "Raven Swarm",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": true,
+      "description": "A figure turned to pure light while a storm of ravens closes in."
+    },
+    {
+      "image": "media/lone-wanderer.jpg",
+      "title": "Lone Wanderer",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": true,
+      "description": "A lone figure on a misty hillside among giant swords left from an old war."
+    },
+    {
+      "image": "media/moth-mask.jpg",
+      "title": "Moth Mask",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": true,
+      "description": "A pale moth resting over her eyes, with more drifting through the dark."
+    },
+    {
+      "image": "media/blindfolded-in-mist.jpg",
+      "title": "Blindfolded in Mist",
+      "category": "Portraits",
+      "year": 2026,
+      "featured": false,
+      "description": "Soft light, flowing fabric and a blindfold, toned like an old print."
+    },
+    {
+      "image": "media/ruined-garden.jpg",
+      "title": "Ruined Garden",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "The same muse placed in a sunlit garden of broken columns and white flowers."
+    },
+    {
+      "image": "media/ghostly-triptych.jpg",
+      "title": "Ghostly Triptych",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "Three moments of one face blurred together into a single frame."
+    },
+    {
+      "image": "media/black-water.jpg",
+      "title": "Black Water",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "Many arms rising out of dark water, hands over her face."
+    },
+    {
+      "image": "media/ink-black-water.jpg",
+      "title": "Ink-Black Water",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "The black water piece pushed further into high-contrast black and white."
+    },
+    {
+      "image": "media/shoreline-dusk.jpg",
+      "title": "Shoreline, Dusk",
+      "category": "Retouching",
+      "year": 2026,
+      "featured": false,
+      "description": "A gothic portrait on the beach as the last light fades."
+    },
+    {
+      "image": "media/shoreline-night.jpg",
+      "title": "Shoreline, Night",
+      "category": "Retouching",
+      "year": 2026,
+      "featured": false,
+      "description": "The shoreline portrait in grainy black and white."
+    },
+    {
+      "image": "media/pit-lane.jpg",
+      "title": "Pit Lane",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "The same subject moved into a wet pit lane at night."
+    },
+    {
+      "image": "media/painted-wall.jpg",
+      "title": "Painted Wall",
+      "category": "Portraits",
+      "year": 2026,
+      "featured": false,
+      "description": "A street portrait in front of a mural, toned down to warm monochrome."
+    },
+    {
+      "image": "media/neon-eyes.jpg",
+      "title": "Neon Eyes",
+      "category": "Portraits",
+      "year": 2026,
+      "featured": false,
+      "description": "Lime hair, yellow eyes and a flash-lit concrete corner."
+    },
+    {
+      "image": "media/moonlit-violin.jpg",
+      "title": "Moonlit Violin",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "A violinist drifting in a boat, met by a winged figure over glittering water."
+    }
+  ]
+}

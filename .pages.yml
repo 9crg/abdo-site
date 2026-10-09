@@ -1,0 +1,82 @@
+media:
+  input: media
+  output: media
+  categories: [image]
+  rename: safe
+
+content:
+  - name: site
+    label: My website
+    type: file
+    path: content/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: hero_image
+        label: Main image (top of the page)
+        type: image
+      - name: hero_title
+        label: Big title
+        type: text
+        description: Press Enter to start a new line.
+      - name: hero_intro
+        label: Short intro (top left)
+        type: text
+      - name: hero_side
+        label: Side list (top right)
+        type: text
+        description: One item per line.
+      - name: statement
+        label: Statement
+        type: text
+      - name: works
+        label: Works
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} ({category})"
+        fields:
+          - name: image
+            label: Image
+            type: image
+            required: true
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: category
+            label: Category
+            type: select
+            options:
+              values: [Portraits, Manipulation, Retouching]
+          - name: year
+            label: Year
+            type: number
+          - name: featured
+            label: Show in Featured slider
+            type: boolean
+          - name: description
+            label: Short description
+            type: text
+      - name: about_lead
+        label: About, first line
+        type: text
+      - name: about_text
+        label: About, more text
+        type: text
+        description: Leave an empty line between paragraphs.
+      - name: contact_text
+        label: Contact text
+        type: text
+      - name: email
+        label: Email address
+        type: string
+      - name: instagram
+        label: Instagram link
+        type: string
+      - name: artstation
+        label: ArtStation link
+        type: string
+        description: Leave empty to hide it.
