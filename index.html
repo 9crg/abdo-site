@@ -146,7 +146,7 @@ dialog::backdrop { background: rgba(14, 14, 13, .95); }
   .about { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .hero { background-position: 22% 62%; }
+  .hero::before { background-position: 22% 62%; }
   .nav ul { display: none; }
   .hero-notes p:last-child { display: none; }
   .hero-foot { flex-direction: column; align-items: stretch; }
@@ -154,7 +154,35 @@ dialog::backdrop { background: rgba(14, 14, 13, .95); }
   .statement p { text-indent: 0; }
   .grid { grid-template-columns: 1fr; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card img { transition: none; } }
+/* ---------- Motion ---------- */
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--hero-img, none) center 62% / cover no-repeat;
+  animation: heroZoom 2.8s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes heroZoom { from { transform: scale(1.14); opacity: 0; } 30% { opacity: 1; } to { transform: scale(1); opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.nav { animation: fadeIn 1s .3s both; }
+.hero-notes { animation: fadeIn 1s .6s both; }
+.hero h1 { animation: fadeUp 1.2s .5s cubic-bezier(.2,.7,.2,1) both; }
+.hero-side { animation: fadeUp 1s .9s cubic-bezier(.2,.7,.2,1) both; }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.card button { overflow: hidden; }
+.card img { transition: transform .8s cubic-bezier(.2,.7,.2,1), opacity .3s; }
+.card button:hover img { transform: scale(1.05); }
+.btn { transition: background .25s, color .25s; }
+.btn:hover { background: #fff; }
+.filters button, .contact-list a, .nav ul a { transition: color .25s, border-color .25s, opacity .25s; }
+dialog[open] { animation: fadeIn .35s ease both; }
+dialog[open] .lb-stage img { animation: lbIn .5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes lbIn { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
 <body>
@@ -292,8 +320,21 @@ function render() {
     el.querySelector("p").textContent = a.description;
     el.querySelector("button").addEventListener("click", () => openLb(visible, i));
     grid.appendChild(el);
+    reveal(el, (i % 3) * 110);
   });
 }
+
+/* ---------- Scroll reveal ---------- */
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const io = "IntersectionObserver" in window && !reduceMotion
+  ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" })
+  : null;
+function reveal(el, delay = 0) {
+  if (!io) return;
+  el.classList.add("reveal"); el.style.transitionDelay = delay + "ms"; io.observe(el);
+}
+document.querySelectorAll(".statement p, .works-head, .featured-head, .featured-text, .featured-img, .about > *, footer > *")
+  .forEach((el, i) => reveal(el, el.matches(".featured-img, .about > :nth-child(2)") ? 120 : el.matches(".about > :nth-child(3)") ? 240 : 0));
 
 /* ---------- Featured ---------- */
 let featured = [];
@@ -306,6 +347,10 @@ function showFeatured(i) {
   document.getElementById("f-title").textContent = a.title;
   document.getElementById("f-desc").textContent = a.description;
   document.getElementById("f-meta").textContent = `${a.category} / ${a.year} / ${fi + 1} of ${featured.length}`;
+  if (!reduceMotion && document.getElementById("f-img").animate) {
+    document.getElementById("f-img").animate([{ opacity: 0, transform: "scale(1.03)" }, { opacity: 1, transform: "none" }], { duration: 700, easing: "cubic-bezier(.2,.7,.2,1)" });
+    document.querySelector(".featured-text").animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 600, easing: "ease-out" });
+  }
 }
 document.getElementById("f-prev").onclick = () => showFeatured(fi - 1);
 document.getElementById("f-next").onclick = () => showFeatured(fi + 1);
@@ -332,28 +377,48 @@ let tx = null;
 lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
 lb.addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1)); tx = null; });
 
-/* ---------- Star-dust band ---------- */
+/* ---------- Star-dust band (flowing + twinkling) ---------- */
 const cv = document.getElementById("dust"), ctx = cv.getContext("2d");
-function drawDust() {
-  const dpr = window.devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
-  cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
-  const rgb = getComputedStyle(document.documentElement).getPropertyValue("--dot").trim();
+let base = null, stars = [], W = 0, H = 0, dpr = 1, rgb = "236,228,212", visibleDust = true, raf = 0;
+const TAU = Math.PI * 2;
+function buildDust() {
+  dpr = window.devicePixelRatio || 1; W = cv.clientWidth; H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr;
+  rgb = getComputedStyle(document.documentElement).getPropertyValue("--dot").trim();
   const r = rng(7);
-  const mid = x => H * .48 + Math.sin(x / W * 5.2) * H * .1 + Math.sin(x / W * 13 + 1.3) * H * .045;
-  const thick = x => H * (.07 + .05 * Math.sin(x / W * 7 + .5) ** 2);
+  /* the band repeats every W pixels so it can flow sideways without a seam */
+  const mid = x => H * .48 + Math.sin(x / W * TAU) * H * .1 + Math.sin(x / W * TAU * 3 + 1.3) * H * .045;
+  const thick = x => H * (.07 + .05 * Math.sin(x / W * TAU * 2 + .5) ** 2);
+  base = document.createElement("canvas"); base.width = W * dpr; base.height = H * dpr;
+  const b = base.getContext("2d"); b.scale(dpr, dpr);
   const n = Math.round(W * 14);
   for (let i = 0; i < n; i++) {
     const x = r() * W, g = (r() + r() + r() - 1.5) / 1.5;
-    const y = mid(x) + g * thick(x) * 1.6;
-    ctx.fillStyle = `rgba(${rgb},${(.25 + r() * .55) * (1 - Math.abs(g) * .6)})`;
-    ctx.fillRect(x, y, .9, .9);
+    b.fillStyle = `rgba(${rgb},${(.25 + r() * .55) * (1 - Math.abs(g) * .6)})`;
+    b.fillRect(x, mid(x) + g * thick(x) * 1.6, .9, .9);
   }
+  stars = [];
   for (let i = 0; i < Math.round(W / 9); i++) {
-    const x = r() * W, y = mid(x) + (r() - .5) * H * .9;
-    ctx.fillStyle = `rgba(${rgb},${.35 + r() * .5})`;
-    ctx.beginPath(); ctx.arc(x, y, r() * 2.6 + .6, 0, 7); ctx.fill();
+    const x = r() * W;
+    stars.push({ x, y: mid(x) + (r() - .5) * H * .9, rad: r() * 2.6 + .6, a: .35 + r() * .5, ph: r() * TAU, sp: .6 + r() * 1.6 });
   }
 }
+function frame(t) {
+  const s = t / 1000, shift = (s * 9) % W;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
+  ctx.drawImage(base, -shift * dpr, 0); ctx.drawImage(base, (W - shift) * dpr, 0);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  for (const st of stars) {
+    let x = st.x - shift * .5; x = ((x % W) + W) % W;
+    ctx.fillStyle = `rgba(${rgb},${st.a * (.45 + .55 * (.5 + .5 * Math.sin(s * st.sp + st.ph)))})`;
+    ctx.beginPath(); ctx.arc(x, st.y, st.rad, 0, TAU); ctx.fill();
+  }
+  if (!reduceMotion && visibleDust) raf = requestAnimationFrame(frame);
+}
+function drawDust() { cancelAnimationFrame(raf); buildDust(); frame(performance.now()); }
+if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => {
+  visibleDust = e.isIntersecting; cancelAnimationFrame(raf); if (visibleDust && base) raf = requestAnimationFrame(frame);
+}).observe(cv);
 addEventListener("resize", drawDust);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawDust);
 
@@ -370,7 +435,7 @@ fetch("content/site.json", { cache: "no-cache" })
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(site => {
     items = (site.works || []).filter(w => w && w.image).map(w => ({ ...w, src: w.image, category: w.category || "Other", year: w.year || "" }));
-    if (site.hero_image) document.querySelector(".hero").style.backgroundImage = `url("${site.hero_image}")`;
+    if (site.hero_image) document.querySelector(".hero").style.setProperty("--hero-img", `url("${site.hero_image}")`);
     setText("hero-title", site.hero_title);
     setText("hero-intro", site.hero_intro);
     setText("hero-side", site.hero_side);
