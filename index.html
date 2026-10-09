@@ -154,6 +154,20 @@ dialog::backdrop { background: rgba(14, 14, 13, .95); }
   .statement p { text-indent: 0; }
   .grid { grid-template-columns: 1fr; }
 }
+/* ---------- Signature animation ---------- */
+.signature { cursor: pointer; }
+.sig-star { transform-box: fill-box; transform-origin: center; }
+.signature.ready .sig-text { clip-path: inset(-20% 100% -20% 0); }
+.signature.ready .sig-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.signature.ready .sig-star { transform: scale(0); }
+.signature.play .sig-text { animation: sigWipe 1.8s cubic-bezier(.55,.1,.35,1) forwards; }
+.signature.play .sig-line { animation: sigLine 1.2s 1.4s cubic-bezier(.6,0,.2,1) forwards; }
+.signature.play .sig-star { animation: sigPop .7s 2.5s cubic-bezier(.3,1.6,.5,1) forwards, sigTwinkle 3.2s 3.2s ease-in-out infinite; }
+@keyframes sigWipe { to { clip-path: inset(-20% 0% -20% 0); } }
+@keyframes sigLine { to { stroke-dashoffset: 0; } }
+@keyframes sigPop { from { transform: scale(0) rotate(-90deg); } to { transform: scale(1) rotate(0); } }
+@keyframes sigTwinkle { 0%, 100% { transform: scale(1) rotate(0); opacity: 1; } 50% { transform: scale(.7) rotate(45deg); opacity: .55; } }
+
 /* ---------- Motion ---------- */
 .hero::before {
   content: ""; position: absolute; inset: 0;
@@ -182,6 +196,9 @@ dialog[open] .lb-stage img { animation: lbIn .5s cubic-bezier(.2,.7,.2,1) both; 
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+  .signature.ready .sig-text { clip-path: none; }
+  .signature.ready .sig-line { stroke-dashoffset: 0; }
+  .signature.ready .sig-star { transform: none; }
 }
 </style>
 </head>
@@ -266,9 +283,9 @@ dialog[open] .lb-stage img { animation: lbIn .5s cubic-bezier(.2,.7,.2,1) both; 
 
   <footer class="pad">
     <svg class="signature" viewBox="0 0 420 150" role="img" aria-label="abdo">
-      <text x="6" y="108" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="128" fill="currentColor">abdo</text>
-      <path d="M10 128 C 120 118, 230 140, 300 124 S 395 106, 412 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M380 34 L384 46 L396 50 L384 54 L380 66 L376 54 L364 50 L376 46 Z" fill="currentColor"/>
+      <text class="sig-text" x="6" y="108" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="128" fill="currentColor">abdo</text>
+      <path class="sig-line" pathLength="1" d="M10 128 C 120 118, 230 140, 300 124 S 395 106, 412 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path class="sig-star" d="M380 34 L384 46 L396 50 L384 54 L380 66 L376 54 L364 50 L376 46 Z" fill="currentColor"/>
     </svg>
     <p class="tiny">© <span id="year"></span> abdo<br>All works belong to the artist</p>
   </footer>
@@ -335,6 +352,15 @@ function reveal(el, delay = 0) {
 }
 document.querySelectorAll(".statement p, .works-head, .featured-head, .featured-text, .featured-img, .about > *, footer > *")
   .forEach((el, i) => reveal(el, el.matches(".featured-img, .about > :nth-child(2)") ? 120 : el.matches(".about > :nth-child(3)") ? 240 : 0));
+
+/* ---------- Signature: writes itself when it comes into view, tap to replay ---------- */
+const sig = document.querySelector(".signature");
+if (sig && !reduceMotion && "IntersectionObserver" in window) {
+  sig.classList.add("ready");
+  const play = () => { sig.classList.remove("play"); void sig.getBoundingClientRect(); sig.classList.add("play"); };
+  window.startSignature = () => new IntersectionObserver(([e], o) => { if (e.isIntersecting) { play(); o.disconnect(); } }, { threshold: .6 }).observe(sig);
+  sig.addEventListener("click", play);
+}
 
 /* ---------- Featured ---------- */
 let featured = [];
@@ -450,6 +476,7 @@ fetch("content/site.json", { cache: "no-cache" })
     buildFilters(); render();
     featured = items.filter(a => a.featured); if (!featured.length) featured = items.slice(0, 3);
     if (featured.length) showFeatured(0); else $("featured").hidden = true;
+    if (window.startSignature) requestAnimationFrame(() => setTimeout(window.startSignature, 300));
   })
   .catch(() => { $("grid").innerHTML = '<p class="empty">Could not load content/site.json. Open the site through its web address, not as a file.</p>'; });
 drawDust();
