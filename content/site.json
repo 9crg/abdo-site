@@ -86,14 +86,6 @@
       "description": "The shoreline portrait in grainy black and white."
     },
     {
-      "image": "media/pit-lane.jpg",
-      "title": "Pit Lane",
-      "category": "Manipulation",
-      "year": 2026,
-      "featured": false,
-      "description": "The same subject moved into a wet pit lane at night."
-    },
-    {
       "image": "media/painted-wall.jpg",
       "title": "Painted Wall",
       "category": "Portraits",
