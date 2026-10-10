@@ -164,6 +164,14 @@
       "year": 2025,
       "featured": false,
       "description": "A glowing red x-ray silhouette of a kneeling woman against a pure black background. Fine anatomical details and crimson light create a minimal, haunting atmosphere of stillness and mystery."
+    },
+    {
+      "image": "media/night-vision-watch-over-desert-lights.png",
+      "title": "Night Watch",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "A lone, veiled figure stands in a remote desert under grainy green night vision."
     }
   ],
   "about_lead": "Photo editor and digital artist working in Photoshop.",
