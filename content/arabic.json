@@ -4,8 +4,8 @@
   "hero_intro": "Arabic works by abdo, inspired by the old kingdoms of Yemen and Saudi Arabia.",
   "hero_side": "Yemen\nSaudi Arabia\nThe incense road\nأعمال عربية",
   "statement": "Inscriptions in the old Musnad script, temples and dams of Saba, mudbrick towns climbing the mountains. This is the world my Arabic works come from.",
-  "background_1": "media/arabic-bg-1.jpg",
-  "background_2": "media/arabic-bg-2.jpg",
+  "background_1": "media/AR-1/Back1.png",
+  "background_2": "media/AR-1/back2.png",
   "works": [
     {
       "image": "media/AR-1/old arab 1.png",
@@ -20,6 +20,13 @@
       "category": "Arabian Heritage",
       "year": 2026,
       "description": "A sepia-toned vision of an Arabian woman surrounded by ancient ruins, inscriptions, and historic desert settlements."
+    },
+    {
+      "image": "media/sepia-levantine-courtyard-portrait.png",
+      "title": "Lady of the Old Courtyard",
+      "category": "Arabian Heritage",
+      "year": 2026,
+      "description": "A striking portrait of a woman in ornate traditional attire, set against a historic courtyard. Warm sepia tones evoke the elegance and mystery of old Arabian architecture."
     }
   ]
 }
