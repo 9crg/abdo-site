@@ -62,6 +62,14 @@
       "description": "Soft light, flowing fabric and a blindfold, toned like an old print."
     },
     {
+      "image": "media/newdreamyretrobedroom16x9-1.png",
+      "title": "A Room Full of Memories",
+      "category": "Portraits",
+      "year": 2025,
+      "featured": false,
+      "description": "The black-and-white treatment, vintage toys, and cinematic lighting make it a distinctive portfolio image."
+    },
+    {
       "image": "media/ruined-garden.jpg",
       "title": "Ruined Garden",
       "category": "Manipulation",
@@ -78,20 +86,20 @@
       "description": "Many arms rising out of dark water, hands over her face."
     },
     {
-      "image": "media/ink-black-water.jpg",
-      "title": "Ink-Black Water",
-      "category": "Manipulation",
-      "year": 2026,
-      "featured": false,
-      "description": "The black water piece pushed further into high-contrast black and white."
-    },
-    {
       "image": "media/submergedportraitdifferentwomanpose.png",
       "title": "Beneath the Silence",
       "category": "Portraits",
       "year": 2024,
       "featured": false,
       "description": "The dramatic lighting, underwater atmosphere, and flowing fabric make this image a strong featured visual."
+    },
+    {
+      "image": "media/ink-black-water.jpg",
+      "title": "Ink-Black Water",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "The black water piece pushed further into high-contrast black and white."
     },
     {
       "image": "media/Surrounded by Hypnotic Fish Eyes.png",
@@ -140,14 +148,6 @@
       "year": 2025,
       "featured": false,
       "description": "A dreamy pink anime-inspired collector room featuring vibrant neon lighting, detailed displays, and a cozy aesthetic."
-    },
-    {
-      "image": "media/newdreamyretrobedroom16x9-1.png",
-      "title": "A Room Full of Memories",
-      "category": "Portraits",
-      "year": 2025,
-      "featured": false,
-      "description": "The black-and-white treatment, vintage toys, and cinematic lighting make it a distinctive portfolio image."
     },
     {
       "image": "media/late-night-television-in-the-dark.png",
