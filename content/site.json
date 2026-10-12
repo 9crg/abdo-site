@@ -6,6 +6,22 @@
   "statement": "Every image here started as a real photo of a real person. I take it into Photoshop and build it into something new.",
   "works": [
     {
+      "image": "media/ghostly-triptych.jpg",
+      "title": "Ghostly Triptych",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "Three moments of one face blurred together into a single frame."
+    },
+    {
+      "image": "media/distorted-faces-in-monochrome.png",
+      "title": "A Thousand Faces",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "A gritty black-and-white collage of distorted faces, fragmented identities, and chaotic brushstrokes. Harsh contrasts and grainy textures explore inner conflict and the masks we hide behind."
+    },
+    {
       "image": "media/raven-swarm.jpg",
       "title": "Raven Swarm",
       "category": "Manipulation",
@@ -30,6 +46,14 @@
       "description": "A pale moth resting over her eyes, with more drifting through the dark."
     },
     {
+      "image": "media/gritty-cinematic-heartbreak-portrait.png",
+      "title": "Love in Ruins",
+      "category": "Portraits",
+      "year": 2026,
+      "featured": false,
+      "description": "A raw, punk-inspired editorial portrait blending monochrome tones with striking crimson heart makeup. Messy dark hair, harsh flash lighting, and gritty film textures create a rebellious atmosphere caught between vulnerability and defiance."
+    },
+    {
       "image": "media/blindfolded-in-mist.jpg",
       "title": "Blindfolded in Mist",
       "category": "Portraits",
@@ -44,14 +68,6 @@
       "year": 2026,
       "featured": false,
       "description": "The same muse placed in a sunlit garden of broken columns and white flowers."
-    },
-    {
-      "image": "media/ghostly-triptych.jpg",
-      "title": "Ghostly Triptych",
-      "category": "Manipulation",
-      "year": 2026,
-      "featured": false,
-      "description": "Three moments of one face blurred together into a single frame."
     },
     {
       "image": "media/black-water.jpg",
@@ -70,12 +86,12 @@
       "description": "The black water piece pushed further into high-contrast black and white."
     },
     {
-      "image": "media/distorted-faces-in-monochrome.png",
-      "title": "A Thousand Faces",
-      "category": "Manipulation",
-      "year": 2026,
+      "image": "media/submergedportraitdifferentwomanpose.png",
+      "title": "Beneath the Silence",
+      "category": "Portraits",
+      "year": 2024,
       "featured": false,
-      "description": "A gritty black-and-white collage of distorted faces, fragmented identities, and chaotic brushstrokes. Harsh contrasts and grainy textures explore inner conflict and the masks we hide behind."
+      "description": "The dramatic lighting, underwater atmosphere, and flowing fabric make this image a strong featured visual."
     },
     {
       "image": "media/Surrounded by Hypnotic Fish Eyes.png",
@@ -84,6 +100,22 @@
       "year": 2026,
       "featured": false,
       "description": "A surreal black-and-white manga scene where a lone figure is surrounded by a suffocating swarm of wide-eyed fish. Grainy textures and heavy inkwork create an unsettling atmosphere of paranoia and claustrophobia."
+    },
+    {
+      "image": "media/moonlit-violin.jpg",
+      "title": "Moonlit Violin",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "A violinist drifting in a boat, met by a winged figure over glittering water."
+    },
+    {
+      "image": "media/image2026-10-09210816327.png",
+      "title": "Nothing Left to Fight",
+      "category": "Manipulation",
+      "year": 2026,
+      "featured": false,
+      "description": "A lone man calmly disintegrates into dust amid a ruined world, with no enemy in sight."
     },
     {
       "image": "media/painted-wall.jpg",
@@ -102,28 +134,12 @@
       "description": "Lime hair, yellow eyes and a flash-lit concrete corner."
     },
     {
-      "image": "media/moonlit-violin.jpg",
-      "title": "Moonlit Violin",
-      "category": "Manipulation",
-      "year": 2026,
-      "featured": false,
-      "description": "A violinist drifting in a boat, met by a winged figure over glittering water."
-    },
-    {
       "image": "media/dreamy-pink-anime-collector-room.png",
       "title": "Dreamy Pink Anime Collector Room",
       "category": "Retouching",
       "year": 2025,
       "featured": false,
       "description": "A dreamy pink anime-inspired collector room featuring vibrant neon lighting, detailed displays, and a cozy aesthetic."
-    },
-    {
-      "image": "media/submergedportraitdifferentwomanpose.png",
-      "title": "Beneath the Silence",
-      "category": "Portraits",
-      "year": 2024,
-      "featured": false,
-      "description": "The dramatic lighting, underwater atmosphere, and flowing fabric make this image a strong featured visual."
     },
     {
       "image": "media/newdreamyretrobedroom16x9-1.png",
@@ -140,22 +156,6 @@
       "year": 2024,
       "featured": false,
       "description": "A lone viewer sits before a vintage television in a vast, nearly black room. The warm glow of a bedside lamp contrasts with the cold light of the screen, while a forgotten VHS tape rests on the floor. A cinematic study of isolation, nostalgia, and the strange comfort of late-night television."
-    },
-    {
-      "image": "media/gritty-cinematic-heartbreak-portrait.png",
-      "title": "Love in Ruins",
-      "category": "Portraits",
-      "year": 2026,
-      "featured": false,
-      "description": "A raw, punk-inspired editorial portrait blending monochrome tones with striking crimson heart makeup. Messy dark hair, harsh flash lighting, and gritty film textures create a rebellious atmosphere caught between vulnerability and defiance."
-    },
-    {
-      "image": "media/image2026-10-09210816327.png",
-      "title": "Nothing Left to Fight",
-      "category": "Manipulation",
-      "year": 2026,
-      "featured": false,
-      "description": "A lone man calmly disintegrates into dust amid a ruined world, with no enemy in sight."
     },
     {
       "image": "media/serene-neon-x-ray-profile.png",
