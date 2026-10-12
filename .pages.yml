@@ -80,3 +80,61 @@ content:
         label: ArtStation link
         type: string
         description: Leave empty to hide it.
+
+  - name: arabic
+    label: Arabic page
+    type: file
+    path: content/arabic.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: title_ar
+        label: Arabic title
+        type: string
+      - name: title_en
+        label: English title
+        type: string
+      - name: hero_intro
+        label: Short intro (top left)
+        type: text
+      - name: hero_side
+        label: Side list (top right)
+        type: text
+        description: One item per line.
+      - name: statement
+        label: Statement
+        type: text
+      - name: background_1
+        label: Background picture 1 (top of the page)
+        type: image
+      - name: background_2
+        label: Background picture 2 (fades in as you scroll)
+        type: image
+        description: Leave empty to use only picture 1.
+      - name: works
+        label: Arabic works
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: image
+            label: Image
+            type: image
+            required: true
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: category
+            label: Category
+            type: string
+            description: For example Calligraphy, Portraits or Heritage.
+          - name: year
+            label: Year
+            type: number
+          - name: description
+            label: Short description
+            type: text
