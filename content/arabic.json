@@ -6,5 +6,13 @@
   "statement": "Inscriptions in the old Musnad script, temples and dams of Saba, mudbrick towns climbing the mountains. This is the world my Arabic works come from.",
   "background_1": "media/arabic-bg-1.jpg",
   "background_2": "media/arabic-bg-2.jpg",
-  "works": []
+  "works": [
+    {
+      "image": "media/AR-1/old arab 1.png",
+      "title": "Veiled Heritage",
+      "category": "Arabian Heritage",
+      "year": 2026,
+      "description": "A mysterious veiled woman stands against an aged backdrop of Arabian manuscripts and historic desert settlements. A dark portrait inspired by Saudi Arabia’s traditional heritage and forgotten history."
+    }
+  ]
 }
