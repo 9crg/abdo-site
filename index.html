@@ -156,6 +156,7 @@ dialog::backdrop { background: rgba(14, 14, 13, .95); }
 }
 /* ---------- Signature animation ---------- */
 .signature { cursor: pointer; }
+.sig-link { display: inline-block; color: inherit; }
 .sig-star { transform-box: fill-box; transform-origin: center; }
 .signature.ready .sig-text { clip-path: inset(-20% 100% -20% 0); }
 .signature.ready .sig-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
@@ -282,11 +283,13 @@ dialog[open] .lb-stage img { animation: lbIn .5s cubic-bezier(.2,.7,.2,1) both; 
   </section>
 
   <footer class="pad">
+    <a href="arabic.html" class="sig-link" aria-label="abdo — Arabic works" title="Arabic works">
     <svg class="signature" viewBox="0 0 420 150" role="img" aria-label="abdo">
       <text class="sig-text" x="6" y="108" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="128" fill="currentColor">abdo</text>
       <path class="sig-line" pathLength="1" d="M10 128 C 120 118, 230 140, 300 124 S 395 106, 412 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       <path class="sig-star" d="M380 34 L384 46 L396 50 L384 54 L380 66 L376 54 L364 50 L376 46 Z" fill="currentColor"/>
     </svg>
+    </a>
     <p class="tiny">© <span id="year"></span> abdo<br>All works belong to the artist</p>
   </footer>
 </div>
@@ -359,7 +362,6 @@ if (sig && !reduceMotion && "IntersectionObserver" in window) {
   sig.classList.add("ready");
   const play = () => { sig.classList.remove("play"); void sig.getBoundingClientRect(); sig.classList.add("play"); };
   window.startSignature = () => new IntersectionObserver(([e], o) => { if (e.isIntersecting) { play(); o.disconnect(); } }, { threshold: .6 }).observe(sig);
-  sig.addEventListener("click", play);
 }
 
 /* ---------- Featured ---------- */
